@@ -1,0 +1,32 @@
+# Builds the mod on GitHub's servers every time code is pushed (and on demand
+# from the Actions tab). The Geode index asks for .geode files built this way
+# rather than on your own PC. The finished file appears under the run's
+# "Artifacts"; attach that file to a GitHub release to publish it.
+#
+# The Geode SDK version comes from mod.json ("geode": "5.11.2"), because the
+# action's `sdk` input defaults to "given".
+
+name: Build Geode Mod
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+
+      - name: Upload the .geode file
+        uses: actions/upload-artifact@v4
+        with:
+          name: Better Startpos
+          path: ${{ steps.build.outputs.build-output }}

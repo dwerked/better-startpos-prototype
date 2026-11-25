@@ -1,0 +1,64 @@
+{
+	"geode": "6.0.0",
+	"gd": {
+		"win": "2.2091"
+	},
+	"id": "dwerked.better-startpos",
+	"name": "Better Startpos",
+	"version": "v1.0.0",
+	"developer": "dwerked",
+	"description": "A faster startpos switcher that can link a practice copy to the level you're trying to beat.",
+	"tags": ["gameplay", "utility", "enhancement"],
+	"links": {
+		"source": "https://github.com/dwerked/better-startpos"
+	},
+	"issues": {
+		"info": "Found a bug or have an idea? Open an issue on GitHub.",
+		"url": "https://github.com/dwerked/better-startpos/issues"
+	},
+	"resources": {
+		"sprites": ["resources/*.png"]
+	},
+	"settings": {
+		"previous-startpos": {
+			"type": "keybind",
+			"name": "Previous startpos",
+			"description": "Go back one start position. Going back from the first one goes to the start of the level.",
+			"category": "gameplay",
+			"default": "Left"
+		},
+		"next-startpos": {
+			"type": "keybind",
+			"name": "Next startpos",
+			"description": "Go forward one start position.",
+			"category": "gameplay",
+			"default": "Right"
+		},
+		"go-to-startpos": {
+			"type": "keybind",
+			"name": "Go to startpos",
+			"description": "Freezes the level and lets you type a startpos number on the switcher display. Press Enter (or this key again) to jump straight there, or Esc to cancel.",
+			"category": "gameplay",
+			"default": "G"
+		},
+		"fast-sp-auto": {
+			"type": "bool",
+			"name": "Fast SP on every Play",
+			"description": "Tick the Fast SP checkbox on every level's page by default. With it ticked, every startpos is prepared before the level starts, so switching is near-instant; entering the level takes longer (about as long as switching to every startpos once). Press Esc on the progress screen to skip.",
+			"default": false
+		},
+		"seamless-swap": {
+			"type": "bool",
+			"name": "Seamless level swap",
+			"description": "When swapping between linked levels, keep the current level on screen while the other one loads, then cut straight to it, instead of showing a black loading screen.",
+			"default": false
+		},
+		"keep-practice-loaded": {
+			"type": "bool",
+			"name": "Keep Practice level loaded",
+			"description": "While you play the Target level, keep the Practice level loaded in the background, so swapping back is instant and every prepared startpos stays prepared. Uses more memory. Needs seamless level swap.",
+			"default": true,
+			"enable-if": "seamless-swap"
+		}
+	}
+}
